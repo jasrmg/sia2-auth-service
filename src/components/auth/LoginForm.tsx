@@ -1,4 +1,5 @@
 import { useState, FormEvent } from "react";
+import { sendLockoutEmail } from "../../utils/emailService";
 import { useAuth } from "../../hooks/useAuth";
 import styles from "./LoginForm.module.css";
 
@@ -57,11 +58,35 @@ const LoginForm = ({ onSwitchToSignup }: LoginFormProps) => {
 
       const remainingAttempts = 3 - newAttempts;
 
+      // Send email if account is locked (3rd attempt)
+      if (newAttempts >= 3) {
+        const emailSent = localStorage.getItem(`lockout_email_sent_${email}`);
+
+        // Only send email once per lockout period
+        if (!emailSent) {
+          sendLockoutEmail({
+            userEmail: email,
+            userName: email.split("@")[0], // Use email prefix as name since we don't have their name yet
+          });
+
+          // Mark that email was sent for this lockout period
+          localStorage.setItem(
+            `lockout_email_sent_${email}`,
+            Date.now().toString()
+          );
+
+          // Clear the email-sent flag after 15 minutes
+          setTimeout(() => {
+            localStorage.removeItem(`lockout_email_sent_${email}`);
+          }, 15 * 60 * 1000);
+        }
+      }
+
       if (err.code === "auth/invalid-credential") {
         setError(
           remainingAttempts > 0
             ? `Invalid email or password. ${remainingAttempts} attempt(s) remaining.`
-            : "Too many failed attempts. Account locked for 15 minutes."
+            : "Too many failed attempts. Account locked for 15 minutes. A security alert has been sent to your email."
         );
       } else if (err.code === "auth/too-many-requests") {
         setError("Too many failed login attempts. Please try again later.");
