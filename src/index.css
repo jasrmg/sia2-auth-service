@@ -1,5 +1,41 @@
-/* GLOBAL CSS */
-@import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+
+:root {
+  /* Color Palette */
+  --color-bg-dark: #161b22;
+  --color-text-light: #f0f6fc;
+  --color-primary: #388bfd;
+  --color-success: #2ea043;
+  --color-danger: #d33738;
+
+  /* Fonts */
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Roboto", sans-serif;
+
+  /* Transitions */
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  transition: var(--transition);
+}
+
+body.light-mode {
+  background-color: var(--color-text-light);
+  color: var(--color-bg-dark);
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
