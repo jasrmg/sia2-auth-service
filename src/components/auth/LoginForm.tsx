@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import styles from "./LoginForm.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 interface LoginFormProps {
   onSwitchToSignup: () => void;
@@ -14,6 +15,8 @@ const LoginForm = ({ onSwitchToSignup }: LoginFormProps) => {
   const [loading, setLoading] = useState(false);
 
   const { login } = useAuth();
+
+  usePageTitle("Login");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

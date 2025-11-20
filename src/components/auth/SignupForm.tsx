@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import PasswordStrength from "./PasswordStrength";
 import styles from "./SignupForm.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 interface SignupFormProps {
   onSwitchToLogin: () => void;
@@ -18,6 +19,8 @@ const SignupForm = ({ onSwitchToLogin }: SignupFormProps) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  usePageTitle("Signup");
 
   const { signup } = useAuth();
 

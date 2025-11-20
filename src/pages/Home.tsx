@@ -2,6 +2,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import DarkModeToggle from "../components/UI/DarkModeToggle";
 import styles from "./Home.module.css";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 const Home = () => {
   const { currentUser, logout } = useAuth();
@@ -11,6 +12,8 @@ const Home = () => {
     await logout();
     navigate("/");
   };
+
+  usePageTitle("Home");
 
   return (
     <div className={styles.container}>
