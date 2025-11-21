@@ -2,15 +2,22 @@ import { useState, useEffect } from "react";
 import styles from "./DarkModeToggle.module.css";
 
 const DarkModeToggle = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") !== "light";
+    }
+    return true;
+  });
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      setIsDark(false);
+    if (isDark) {
+      document.body.classList.remove("light-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
       document.body.classList.add("light-mode");
+      localStorage.setItem("theme", "light");
     }
-  }, []);
+  }, [isDark]);
 
   const toggleTheme = () => {
     setIsDark(!isDark);

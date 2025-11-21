@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import Logo from "../../assets/Logo";
 import DarkModeToggle from "../UI/DarkModeToggle";
 import styles from "./AuthLayout.module.css";

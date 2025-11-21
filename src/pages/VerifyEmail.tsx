@@ -17,7 +17,7 @@ const VerifyEmail = () => {
       await sendVerificationEmail();
       setMessage("Verification email sent! Please check your inbox.");
     } catch (error) {
-      setMessage("Failed to send email. Please try again later.");
+      setMessage(`Failed to send email. Please try again later. ${error}`);
     } finally {
       setLoading(false);
     }
