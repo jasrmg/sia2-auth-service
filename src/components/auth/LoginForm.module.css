@@ -97,10 +97,6 @@
   outline: none;
 }
 
-.input::placeholder {
-  color: rgba(240, 246, 252, 0.4);
-}
-
 .input:focus {
   border-color: var(--color-primary);
   background-color: rgba(56, 139, 253, 0.05);
@@ -237,6 +233,11 @@
 body.light-mode .input {
   background-color: rgba(22, 27, 34, 0.05);
   border-color: rgba(22, 27, 34, 0.1);
+  color: var(--color-text-light);
+}
+
+body.light-mode .input::placeholder {
+  color: rgba(22, 27, 34, 0.5);
 }
 
 body.light-mode .input:focus {
