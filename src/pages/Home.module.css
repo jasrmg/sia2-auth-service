@@ -230,22 +230,7 @@
 }
 
 .featureIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-}
-
-.featureIcon svg {
-  color: var(--color-primary);
-  transition: var(--transition);
-}
-
-.feature:hover .featureIcon svg {
-  color: var(--color-success);
-  transform: scale(1.1);
+  font-size: 1.5rem;
 }
 
 /* Animations */
