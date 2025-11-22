@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { renderHook } from "@testing-library/react";
 import { useAuth } from "./useAuth";
-import { AuthProvider } from "../contexts/AuthContext";
+import { AuthProvider } from "../contexts/AuthProvider";
 
 // Mock Firebase
 vi.mock("../config/firebase", () => ({
@@ -9,7 +9,7 @@ vi.mock("../config/firebase", () => ({
 }));
 
 vi.mock("firebase/auth", () => ({
-  onAuthStateChanged: vi.fn((auth, callback) => {
+  onAuthStateChanged: vi.fn((_auth, callback) => {
     callback(null);
     return vi.fn();
   }),

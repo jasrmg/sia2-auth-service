@@ -3,8 +3,6 @@ import { useAuth } from "../../hooks/useAuth";
 import styles from "./LoginForm.module.css";
 import { usePageTitle } from "../../hooks/usePageTitle";
 
-import { usePageTitle } from "../../hooks/usePageTitle";
-
 interface LoginFormProps {
   onSwitchToSignup: () => void;
 }
