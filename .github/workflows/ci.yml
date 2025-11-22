@@ -31,11 +31,15 @@ jobs:
         run: npm run lint --if-present
 
       - name: Run tests
-        run: npm run test -- --run --reporter=verbose
-        timeout-minutes: 10
+        run: npm run test:ci
+        env:
+          CI: true,
+        timeout-minutes: 15
 
       - name: Generate coverage report
-        run: npm run test:coverage --if-present
+        run: npm run test:coverage
+        env:
+          CI: true
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3

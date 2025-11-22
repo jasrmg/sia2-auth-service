@@ -10,9 +10,12 @@ export default defineConfig({
     setupFiles: ["./src/test/setup.ts"],
     testTimeout: 20000,
     hookTimeout: 20000,
+    pool: "forks",
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/test/**"],
     },
   },
   resolve: {
