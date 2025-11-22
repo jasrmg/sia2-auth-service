@@ -1,12 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { useAuth } from "../hooks/useAuth";
 import styles from "./SignupForm.module.css";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 interface SignupFormProps {
   onSwitchToLogin: () => void;
 }
 
 const SignupForm = ({ onSwitchToLogin }: SignupFormProps) => {
+  usePageTitle("Signup");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");

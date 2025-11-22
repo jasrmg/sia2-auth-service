@@ -2,11 +2,14 @@ import { useState, type FormEvent } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import styles from "./LoginForm.module.css";
 
+import { usePageTitle } from "../../hooks/usePageTitle";
+
 interface LoginFormProps {
   onSwitchToSignup: () => void;
 }
 
 const LoginForm = ({ onSwitchToSignup }: LoginFormProps) => {
+  usePageTitle("Login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
