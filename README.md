@@ -1,73 +1,110 @@
-# React + TypeScript + Vite
+﻿# 📌 SIA2 — Login & Registration System (React + Firebase)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is the **final project for SIA2**. It is a simple **Login and Registration system** built using **React** for the frontend and **Firebase Authentication** for the backend.
 
-Currently, two official plugins are available:
+The system allows users to:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Register using email and password
+- Verify email addresses upon registration
+- Login with registered credentials
+- Receive email notifications upon successful login
+- Enable 2-factor authentication (2FA) using email
+- Validate password strength on the frontend
+- Limit login attempts to 3 tries, and notify the user if login fails 3 times, preventing further attempts
 
-## React Compiler
+The main goal is to demonstrate authentication flows, basic form handling, and frontend-backend integration using Firebase.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This document explains exactly what collaborators must do, step-by-step, when contributing to the project.
+Follow this guide strictly to avoid merge conflicts, broken features, and messy branches.
 
-## Expanding the ESLint configuration
+# 🔧 1. Requirements (Install these first)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Install these on your machine before starting:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (LTS) → verify: node -v
+- npm → verify: npm -v
+- Git → verify: git --version
+- VS Code (recommended)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 📥 2. Clone the project (one-time only)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- open vsc -> terminal
+- type this in the terminal
+- `git clone https://github.com/jasrmg/sia2-auth-service.git`
+- cd sia2-auth-service
+
+# ⚙️ 3. Install dependencies
+
+- open vsc -> terminal
+- `npm install`
+
+# 🔑 4. Firebase Setup (VERY IMPORTANT)
+
+- create a .env file in the project root
+- add firebase web config
+
+# ▶️ 5. How to run the project locally
+
+`npm run dev`
+
+Project will run on:
+
+`http://localhost:5173`
+
+# 🌿 6. Branching Workflow (IMPORTANT)
+
+**_ALWAYS START FROM LATEST DEVELOP_**
+
+```
+git fetch origin
+git checkout develop
+git pull origin develop
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+go to your designated branch:
+`git checkout -b branchname`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# ✏️ 7. Make your changes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Write your code normally.
+
+# 💾 8. Commit your work
+
+Stage your changes:
+`git add .`
+
+Commit with a meaningful message:
+`git commit -m "feat: add login page UI and basic client-side validation"`
+
+# ⬆️ 9. Push your branch
+
+`git push origin branchname`
+
+# 🔀 10. Creating a Pull Request (PR)
+
+Once the feature works, you submit a PR.
+
+### Your PR MUST include:
+
+- What you added
+- Why you added it
+- Screenshots (if UI-related)
+- Steps to test it
+
+#### Target branch must ALWAYS be:
+
+`develop`
+
+Example PR Title:  
+** feat: implement firebase login functionality **
+
+#### After submitting a PR:
+
+- Assign at least one reviewer
+- Wait for approval
+- Fix any comments given by the reviewer
+- Once approved → PR gets merged into develop
+
+#### Contributing
+
+For detailed instructions on contributing, see [CONTRIBUTING.md](CONTRIBUTING.md).

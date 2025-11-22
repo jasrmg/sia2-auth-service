@@ -1,6 +1,8 @@
-import { useState, FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import styles from "./LoginForm.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
+
 import { usePageTitle } from "../../hooks/usePageTitle";
 
 interface LoginFormProps {
@@ -8,6 +10,7 @@ interface LoginFormProps {
 }
 
 const LoginForm = ({ onSwitchToSignup }: LoginFormProps) => {
+  usePageTitle("Login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -52,7 +55,8 @@ const LoginForm = ({ onSwitchToSignup }: LoginFormProps) => {
       // Clear attempts on successful login
       localStorage.removeItem(`login_attempts_${email}`);
       localStorage.removeItem(`last_attempt_${email}`);
-    } catch (err: any) {
+    } catch (error: unknown) {
+      const err = error as { code: string };
       // Increment failed attempts
       const newAttempts = attemptsCount + 1;
       localStorage.setItem(`login_attempts_${email}`, newAttempts.toString());
