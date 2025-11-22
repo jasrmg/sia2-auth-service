@@ -31,7 +31,7 @@ jobs:
         run: npm run lint --if-present
 
       - name: Run tests
-        run: npm run test -- --run
+        run: npm run test -- --run --reporter=verbose
         timeout-minutes: 10
 
       - name: Generate coverage report
