@@ -32,6 +32,7 @@ jobs:
 
       - name: Run tests
         run: npm run test -- --run
+        timeout-minutes: 10
 
       - name: Generate coverage report
         run: npm run test:coverage --if-present
