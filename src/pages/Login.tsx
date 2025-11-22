@@ -1,20 +1,9 @@
-import { useState } from "react";
-import AuthLayout from "../components/Layout/AuthLayout";
-import LoginForm from "../components/auth/LoginForm";
-import SignupForm from "../components/auth/SignupForm";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 const Login = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  usePageTitle("Login");
 
-  return (
-    <AuthLayout>
-      {isLogin ? (
-        <LoginForm onSwitchToSignup={() => setIsLogin(false)} />
-      ) : (
-        <SignupForm onSwitchToLogin={() => setIsLogin(true)} />
-      )}
-    </AuthLayout>
-  );
+  return <div>Login Page</div>;
 };
 
 export default Login;

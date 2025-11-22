@@ -1,0 +1,22 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield Base -->
+  <path d="M100 25 L35 55 L35 95 Q35 135 100 175 Q165 135 165 95 L165 55 Z"
+        fill="#388bfd" opacity="0.15"/>
+  <path d="M100 25 L35 55 L35 95 Q35 135 100 175 Q165 135 165 95 L165 55 Z"
+        stroke="#388bfd" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"
+        fill="none"/>
+
+  <!-- Padlock -->
+  <rect x="78" y="100" width="44" height="42" rx="6" fill="#2ea043"/>
+  <path d="M88 100 L88 85 Q88 70 100 70 Q112 70 112 85 L112 100"
+        stroke="#2ea043" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- Keyhole -->
+  <circle cx="100" cy="115" r="6" fill="#f0f6fc"/>
+  <path d="M100 120 L97 130 L103 130 Z" fill="#f0f6fc"/>
+
+  <!-- Star Badge -->
+  <circle cx="100" cy="50" r="10" fill="#2ea043"/>
+  <path d="M100 42 L102 48 L108 48 L103 52 L105 58 L100 54 L95 58 L97 52 L92 48 L98 48 Z"
+        fill="#f0f6fc"/>
+</svg>
