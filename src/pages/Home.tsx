@@ -15,6 +15,8 @@ const Home = () => {
     navigate("/");
   };
 
+  usePageTitle("Home");
+
   return (
     <div className={styles.container}>
       <DarkModeToggle />

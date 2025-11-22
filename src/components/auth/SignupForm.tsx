@@ -21,6 +21,8 @@ const SignupForm = ({ onSwitchToLogin }: SignupFormProps) => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  usePageTitle("Signup");
+
   const { signup } = useAuth();
 
   const validateForm = () => {

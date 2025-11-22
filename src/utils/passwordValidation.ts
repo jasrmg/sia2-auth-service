@@ -12,6 +12,11 @@ export const validatePassword = (
   let score = 0;
   const feedback: string[] = [];
 
+  const hasUpper = /[A-Z]/.test(password);
+  const hasLower = /[a-z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSpecial = /[^A-Za-z0-9]/.test(password);
+
   // Length check
   if (password.length >= 8) {
     score += 25;
@@ -20,34 +25,35 @@ export const validatePassword = (
   }
 
   // Uppercase check
-  if (/[A-Z]/.test(password)) {
-    score += 25;
+  if (hasUpper) {
+    score += 20;
   } else {
     feedback.push("One uppercase letter");
   }
 
   // Lowercase check
-  if (/[a-z]/.test(password)) {
-    score += 25;
+  if (hasLower) {
+    score += 20;
   } else {
     feedback.push("One lowercase letter");
   }
 
   // Number or special character check
-  if (/[0-9]/.test(password) || /[^A-Za-z0-9]/.test(password)) {
-    score += 25;
+  if (hasSpecial) {
+    score += 15;
   } else {
     feedback.push("One number or special character");
   }
 
   // Determine strength
   let strength: PasswordStrength;
-  if (score <= 50) {
-    strength = "weak";
-  } else if (score <= 75) {
+
+  if (password.length >= 8 && hasUpper && hasLower && hasNumber && hasSpecial) {
+    strength = "strong";
+  } else if (password.length >= 8 && hasUpper && hasLower && hasNumber) {
     strength = "medium";
   } else {
-    strength = "strong";
+    strength = "weak";
   }
 
   return { strength, score, feedback };
