@@ -1,13 +1,15 @@
-import { useState, FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import PasswordStrength from "./PasswordStrength";
 import styles from "./SignupForm.module.css";
+import { usePageTitle } from "../../hooks/usePageTitle";
 
 interface SignupFormProps {
   onSwitchToLogin: () => void;
 }
 
 const SignupForm = ({ onSwitchToLogin }: SignupFormProps) => {
+  usePageTitle("Signup");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -58,7 +60,8 @@ const SignupForm = ({ onSwitchToLogin }: SignupFormProps) => {
         confirmPassword,
       });
       setSuccess(true);
-    } catch (err: any) {
+    } catch (error: unknown) {
+      const err = error as { code: string };
       if (err.code === "auth/email-already-in-use") {
         setError("Email is already registered");
       } else if (err.code === "auth/invalid-email") {
