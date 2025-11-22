@@ -33,7 +33,7 @@ jobs:
       - name: Run tests
         run: npm run test:ci
         env:
-          CI: true,
+          CI: true
         timeout-minutes: 15
 
       - name: Generate coverage report
