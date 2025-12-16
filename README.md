@@ -1,4 +1,4 @@
-﻿# 📌 SIA2 — Login & Registration System (React + Firebase)
+﻿# 📌 SIA2 — Login & Registration System (React TypeScript + Firebase)
 
 This project is the **final project for SIA2**. It is a simple **Login and Registration system** built using **React** for the frontend and **Firebase Authentication** for the backend.
 
